@@ -7,7 +7,7 @@ export function removeNote(title: string) {
 
   if (notes.length > filteredNotes.length) {
     saveNote(filteredNotes);
-    console.log(`Note ${chalk.cyanBright(title)} removed`);
+    console.log(`\nNote ${chalk.cyanBright(title)} removed`);
   } else {
     console.log(chalk.yellow(`Note "${chalk.bold(title)}" not found`));
   }

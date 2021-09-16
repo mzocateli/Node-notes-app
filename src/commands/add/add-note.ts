@@ -11,7 +11,7 @@ export function addNote(title: string, body: string) {
       // This should be the function
       notes.push({title, body});
       saveNote(notes);
-      console.log(`Note added`);
+      console.log(`\nNote added`);
       console.log(`Title: ${chalk.cyanBright.bold(title)}`);
       console.log(`Body: ${chalk.bgBlack.whiteBright(body)}`);
     } else {

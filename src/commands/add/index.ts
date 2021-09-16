@@ -1,10 +1,16 @@
 import yargs = require('yargs');
 import {Note} from '../../interfaces/note.interface';
+import {promptBody, promptTitle} from '../../tools/prompts';
+import {commands} from '../commands';
 import {addNote} from './add-note';
 
-
 export function configureAddCommand() {
-  yargs.command('add [title] [body]', 'Adds a new note', buildAdd, handleAdd);
+  yargs.command(
+    `${commands['add'].name} [title] [body]`,
+    `${commands['add'].desc}`,
+    buildAdd,
+    handleAdd,
+  );
 }
 
 function buildAdd() {
@@ -12,17 +18,21 @@ function buildAdd() {
     alias: 't',
     describe: 'New note title',
     type: 'string',
-    demandOption: true,
+    demandOption: false,
   });
 
   yargs.option('body', {
     alias: 'b',
     describe: 'New note content',
     type: 'string',
-    demandOption: true,
+    demandOption: false,
   });
 }
 
-function handleAdd(argv: Note) {
-  addNote(argv.title, argv.body);
+export function handleAdd(argv: Note) {
+  promptTitle(argv).then(() => {
+    promptBody(argv).then(() => {
+      addNote(argv.title, argv.body);
+    });
+  }).catch((err) => console.log(err.message));
 }

@@ -1,7 +1,13 @@
 import yargs = require('yargs');
+import {commands} from '../commands';
 
 import {listNotes} from './list-notes';
 
 export function configureListCommand() {
-  yargs.command('list', 'Lists all notes', ()=>{}, listNotes);
+  yargs.command(
+    `${commands['list'].name}`,
+    `${commands['list'].desc}`,
+    () => {},
+    listNotes,
+  );
 }

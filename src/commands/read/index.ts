@@ -1,10 +1,17 @@
 import yargs = require('yargs');
 import {Note} from '../../interfaces/note.interface';
+import {promptTitle} from '../../tools/prompts';
+import {commands} from '../commands';
 
 import {readNote} from './read-note';
 
 export function configureReadCommand() {
-  yargs.command('read [title]', 'Reads a note', buildRead, handleRead);
+  yargs.command(
+    `${commands['read'].name} [title]`,
+    `${commands['read'].desc}`,
+    buildRead,
+    handleRead,
+  );
 }
 
 function buildRead() {
@@ -12,10 +19,15 @@ function buildRead() {
     alias: 't',
     describe: 'Note title',
     type: 'string',
-    demandOption: true,
+    demandOption: false,
   });
 }
 
-function handleRead(argv: Pick<Note, 'title'>) {
-  readNote(argv.title);
+// TODO: Otimizar callbacks
+export function handleRead(argv: Pick<Note, 'title'>) {
+  promptTitle(argv).then(() => {
+    readNote(argv.title);
+  }, (err) => {
+    console.log(err.message);
+  });
 }

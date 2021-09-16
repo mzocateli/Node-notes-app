@@ -8,7 +8,7 @@ export function readNote(title: string) {
     const fTitle = chalk.cyanBright(noteToBeRead.title);
     const fBody = formatBody(noteToBeRead.body);
 
-    console.log(`${fTitle}\n${fBody}`);
+    console.log(`\n${fTitle}\n${fBody}`);
   } else {
     console.log(chalk.yellow(`Note "${chalk.bold(title)}" not found`));
   }
