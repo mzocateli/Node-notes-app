@@ -1,6 +1,7 @@
 import chalk = require('chalk');
 import {join} from 'path';
 import yargs = require('yargs');
+import {configureDefaultCommand} from './commands/_default';
 import {configureAddCommand} from './commands/add';
 import {configureEditCommand} from './commands/edit';
 import {configureListCommand} from './commands/list';
@@ -24,12 +25,12 @@ const asciiText = `
  * Configures the Arguments, Handlers and Builders of each Command
  */
 function configureCommands() {
-  // configureDefaultCommand();
-  configureAddCommand();
   configureListCommand();
   configureReadCommand();
-  configureEditCommand();
   configureRemoveCommand();
+  configureAddCommand();
+  configureEditCommand();
+  configureDefaultCommand();
 }
 
 /**
@@ -45,7 +46,6 @@ export function configureAndExecuteYargs() {
   yargs.alias('h', 'help');
   yargs.showHelpOnFail(true);
   yargs.epilogue(`Storage:\n  Notes will be stored in ${chalk.cyanBright(pathToNotebook)}`);
-  yargs.demandCommand(1, chalk.redBright('You need to choose a command'));
   configureCommands();
 
   yargs.parseSync();

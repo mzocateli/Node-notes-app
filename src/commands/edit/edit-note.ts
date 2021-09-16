@@ -9,7 +9,7 @@ export function editNote(title: string, newBody: string) {
     notes[noteToBeEdittedIndex].body = newBody;
     saveNote(notes);
     // eslint-disable-next-line max-len
-    console.log(`Note ${chalk.cyanBright(title)} editted with body:\n${formatBody(newBody)}`);
+    console.log(`\nNote ${chalk.cyanBright(title)} editted with body:\n${formatBody(newBody)}`);
   } else {
     console.log(chalk.yellow(`Note "${chalk.bold(title)}" not found`));
   }

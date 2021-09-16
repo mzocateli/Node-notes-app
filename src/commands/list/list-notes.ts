@@ -4,7 +4,7 @@ import {loadNotes, formatBody} from '../../tools/notes';
 export function listNotes() {
   const notes = loadNotes();
 
-  console.log(`Listing Notes`);
+  console.log(`\nListing Notes`);
   for (const note of notes) {
     console.log(formatListRow(note.title, note.body));
   }
