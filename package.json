@@ -12,7 +12,8 @@
     "start": "node bin/notes-app",
     "build": "tsc",
     "test": "echo \"No tests yet!\"",
-    "prepack": "rm -rf lib && npm run build"
+    "prepack": "rm -rf lib && npm run build",
+    "postprepare": "npm audit fix"
   },
   "bin": {
     "notes-app": "./bin/notes-app",
