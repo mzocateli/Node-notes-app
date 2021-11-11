@@ -2,7 +2,7 @@ export interface Command {
   name: string,
   alias?: string,
   desc: string | false,
-  handler: (...{}: any) => any,
+  handler(arg: any): any,
 }
 
 export interface CommandObj {
