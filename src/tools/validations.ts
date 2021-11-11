@@ -15,8 +15,8 @@ export function isValidTitle(title: string): boolean | string {
   return true;
 }
 
-export function isNotDuplicateNote(obj: Notebook, title: string): boolean | string {
-  const foundDuplicate = obj.find((obj) => obj.title === title);
+export function isNotDuplicateNote(notebook: Notebook, title: string): boolean | string {
+  const foundDuplicate = notebook.find((note) => note.title === title);
   if (foundDuplicate) {
     return `Note ${chalk.bold(title)} already exists`;
   }
