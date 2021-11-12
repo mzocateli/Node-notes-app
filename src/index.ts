@@ -32,7 +32,7 @@ function configureCommands() {
 /**
  * Handles arguments using yargs
  */
-export function configureAndExecuteYargs() {
+export async function configureAndExecuteYargs() {
   console.log(chalk.green(asciiText));
   console.log(`Version: ${chalk.green(NOTES_APP_VERSION)}\n`);
 
@@ -44,7 +44,7 @@ export function configureAndExecuteYargs() {
   yargs.epilogue(`Storage:\n  Notes will be stored in ${chalk.cyanBright(pathToNotebook)}`);
   configureCommands();
 
-  yargs.parseSync();
+  yargs.parse();
 }
 
 configureAndExecuteYargs();

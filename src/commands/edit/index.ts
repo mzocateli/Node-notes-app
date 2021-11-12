@@ -30,13 +30,8 @@ function buildEdit() {
   });
 }
 
-// TODO: Otimizar callbacks
-export function handleEdit(argv: Note) {
-  promptTitle(argv).then(() => {
-    promptBody(argv).then(() => {
-      editNote(argv.title, argv.body);
-    }, (err) => {
-      console.log(err.message);
-    });
-  });
+export async function handleEdit(argv: Note) {
+  await promptTitle(argv);
+  await promptBody(argv);
+  editNote(argv.title, argv.body);
 }

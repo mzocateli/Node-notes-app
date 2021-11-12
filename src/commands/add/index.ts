@@ -29,10 +29,8 @@ function buildAdd() {
   });
 }
 
-export function handleAdd(argv: Note) {
-  promptTitle(argv).then(() => {
-    promptBody(argv).then(() => {
-      addNote(argv.title, argv.body);
-    });
-  }).catch((err) => console.log(err.message));
+export async function handleAdd(argv: Note) {
+  await promptTitle(argv);
+  await promptBody(argv);
+  addNote(argv.title, argv.body);
 }

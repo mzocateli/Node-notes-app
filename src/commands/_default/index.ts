@@ -27,9 +27,7 @@ function buildDefault() {
   });
 }
 
-// TODO: Otimizar callbacks
-function handleDefault(argv: any) {
-  promptCommands(argv).then(() => {
-    commands[argv.command].handler(argv);
-  });
+async function handleDefault(argv: any) {
+  await promptCommands(argv);
+  commands[argv.command].handler(argv);
 }
