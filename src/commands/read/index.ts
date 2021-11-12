@@ -23,11 +23,7 @@ function buildRead() {
   });
 }
 
-// TODO: Otimizar callbacks
-export function handleRead(argv: Pick<Note, 'title'>) {
-  promptTitle(argv).then(() => {
-    readNote(argv.title);
-  }, (err) => {
-    console.log(err.message);
-  });
+export async function handleRead(argv: Pick<Note, 'title'>) {
+  await promptTitle(argv);
+  readNote(argv.title);
 }

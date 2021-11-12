@@ -22,11 +22,7 @@ function buildRemove() {
   });
 }
 
-// TODO: Otimizar callbacks
-export function handleRemove(argv: any) {
-  promptTitle(argv).then(() => {
-    removeNote(argv.title);
-  }, (err) => {
-    console.log(err.message);
-  });
+export async function handleRemove(argv: any) {
+  await promptTitle(argv);
+  removeNote(argv.title);
 }
