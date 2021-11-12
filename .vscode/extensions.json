@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "exodiusstudios.comment-anchors",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "sonarsource.sonarlint-vscode"
   ]
 }
