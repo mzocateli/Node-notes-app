@@ -1,5 +1,4 @@
 import chalk = require('chalk');
-import {join} from 'path';
 import yargs = require('yargs');
 import {configureDefaultCommand} from './commands/_default';
 import {configureAddCommand} from './commands/add';
@@ -8,10 +7,7 @@ import {configureListCommand} from './commands/list';
 import {configureReadCommand} from './commands/read';
 import {configureRemoveCommand} from './commands/remove';
 import {pathToNotebook} from './tools/notes';
-import {getPackageVersion} from './tools/package-version';
-
-const pathToPkgJson = join(__dirname, '..', 'package.json');
-const packageVersion = getPackageVersion(pathToPkgJson);
+import {NOTES_APP_VERSION} from './tools/package-version';
 
 const asciiText = `
     _   __         __               
@@ -38,7 +34,7 @@ function configureCommands() {
  */
 export function configureAndExecuteYargs() {
   console.log(chalk.green(asciiText));
-  console.log(`Version: ${chalk.green(packageVersion)}\n`);
+  console.log(`Version: ${chalk.green(NOTES_APP_VERSION)}\n`);
 
   yargs.strict(false);
   yargs.locale('en');
